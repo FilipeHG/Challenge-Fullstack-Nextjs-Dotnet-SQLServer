@@ -1,0 +1,8 @@
+.env
+**/bin/
+**/obj/
+.vs/
+.idea/
+TestResults/
+coverage/
+*.user
