@@ -1,8 +1,6 @@
 # 🚀 API de Solicitações de Suporte - Backend
 
-> Backend do desafio técnico Fullstack para cadastro, acompanhamento e conclusão de solicitações internas de suporte.
-
-O escopo desta entrega é o **backend**, desenvolvido com **.NET 10**, **ASP.NET Core Web API**, **Dapper** e **Microsoft SQL Server**.
+> Backend do desafio técnico Fullstack para cadastro, acompanhamento e conclusão de solicitações internas de suporte. O escopo desta entrega é o **backend**, desenvolvido com **.NET 10**, **ASP.NET Core Web API**, **Dapper** e **Microsoft SQL Server**.
 
 ## 📋 Visão geral
 
@@ -82,9 +80,9 @@ A interface `ISupportRequestRepository` pertence à **Application** e sua implem
 
 Foram evitadas abstrações sem necessidade para o escopo do desafio, como MediatR, AutoMapper, Generic Repository, EF Core, Domain Events e microsserviços.
 
-# Executando localmente
+# ⚙️ Executando localmente
 
-## Pré-requisitos
+## 🧩 Pré-requisitos
 
 - .NET 10 SDK
 - Docker Desktop
@@ -94,7 +92,7 @@ Foram evitadas abstrações sem necessidade para o escopo do desafio, como Media
 
 Implementação validada com **.NET SDK 10.0.300**.
 
-## 1. Subir o SQL Server
+## 🐳 1. Subir o SQL Server
 
 Se o container já existir:
 
@@ -120,7 +118,7 @@ Remove-Item Env:MSSQL_SA_PASSWORD
 
 O volume `sql_testes_data` preserva os dados entre reinicializações.
 
-## 2. Configurar `.env`
+## 🔐 2. Configurar `.env`
 
 ```powershell
 Copy-Item .env.example .env
@@ -139,7 +137,7 @@ JWT_AUDIENCE=Challenge-Fullstack-Nextjs-Dotnet-SQLServer
 
 > O `.env` contém credenciais locais e não deve ser versionado. O `.env.example` contém somente placeholders.
 
-## 3. Aplicar a migration
+## 🗄️ 3. Aplicar a migration
 
 A migration está em:
 
@@ -166,7 +164,7 @@ Remove-Item Env:SQLCMDPASSWORD
 
 A migration cria o banco `SupportRequestsDb`, a tabela `dbo.Solicitacoes`, restrições e índice. Ela é idempotente para a estrutura prevista pelo desafio.
 
-## 4. Restaurar, compilar e executar
+## ▶️ 4. Restaurar, compilar e executar
 
 ```powershell
 dotnet restore Challenge.SupportRequests.sln
@@ -180,7 +178,7 @@ A API ficará disponível em:
 http://localhost:3000
 ```
 
-# Documentação da API
+# 📚 Documentação da API
 
 | Recurso | URL |
 |---|---|
@@ -188,7 +186,7 @@ http://localhost:3000
 | Swagger UI | http://localhost:3000/swagger |
 | OpenAPI 3.1 JSON | http://localhost:3000/openapi/v1.json |
 
-# Autenticação JWT
+# 🔐 Autenticação JWT
 
 As rotas de negócio utilizam **ASP.NET Core JwtBearer**.
 
@@ -211,7 +209,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9qZWN0IjoiQ2hhb
 
 Em produção, a estratégia seria evoluída para tokens curtos, rotação de chaves e Identity Provider.
 
-# Endpoints
+# 🌐 Endpoints
 
 | Método | Endpoint | Operação |
 |---|---|---|
@@ -223,7 +221,7 @@ Em produção, a estratégia seria evoluída para tokens curtos, rotação de ch
 | `PATCH` | `/api/support-requests/{id}/status` | Alterar status |
 | `DELETE` | `/api/support-requests/{id}` | Excluir solicitação aberta |
 
-## Exemplo de criação
+## ➕ Exemplo de criação
 
 ```json
 {
@@ -234,7 +232,7 @@ Em produção, a estratégia seria evoluída para tokens curtos, rotação de ch
 }
 ```
 
-## Filtros e paginação
+## 🔎 Filtros e paginação
 
 ```http
 GET /api/support-requests?status=open&priority=high&search=impressora&page=1&limit=20
@@ -254,7 +252,7 @@ Ordenação padrão:
 ORDER BY DataCriacao DESC, IdSolicitacao DESC
 ```
 
-# Regras de negócio
+# 🧠 Regras de negócio
 
 - título, descrição e solicitante são obrigatórios;
 - prioridade aceita `low`, `medium` ou `high`;
@@ -269,7 +267,7 @@ ORDER BY DataCriacao DESC, IdSolicitacao DESC
 
 As regras de transição e exclusão ficam no **Domain**, não nos controllers.
 
-# Banco de dados
+# 🗃️ Banco de dados
 
 Banco: `SupportRequestsDb`
 
@@ -305,7 +303,7 @@ A pesquisa textual utiliza `LIKE '%texto%'`; para volumes maiores, Full-Text Sea
 
 Todas as consultas executadas pela aplicação são parametrizadas pelo Dapper.
 
-# Testes
+# 🧪 Testes
 
 A solução cobre:
 
@@ -318,20 +316,20 @@ A solução cobre:
 - correlação e erros;
 - persistência com SQL Server real.
 
-## Suíte padrão
+## ✅ Suíte padrão
 
 ```powershell
 dotnet test Challenge.SupportRequests.sln
 ```
 
-## Teste HTTP
+## 🌐 Teste HTTP
 
 ```powershell
 dotnet test tests/Challenge.SupportRequests.IntegrationTests `
   --filter 'Category!=SqlServer'
 ```
 
-## Teste com SQL Server real
+## 🗄️ Teste com SQL Server real
 
 O teste cria um banco temporário `SupportRequestsTest_<GUID>`, valida a persistência e remove o banco ao finalizar.
 
@@ -355,7 +353,7 @@ Na verificação registrada durante a implementação:
 - **26 testes HTTP**;
 - **1 teste de integração com SQL Server real**.
 
-# Verificação completa
+# 🔎 Verificação completa
 
 ```powershell
 dotnet restore Challenge.SupportRequests.sln
@@ -366,7 +364,7 @@ dotnet format Challenge.SupportRequests.sln --verify-no-changes
 
 O arquivo `VERIFICATION.md` contém evidências complementares.
 
-# Erros e observabilidade
+# 📡 Erros e observabilidade
 
 A API utiliza **Problem Details compatível com RFC 9457**.
 
@@ -381,7 +379,7 @@ A API utiliza **Problem Details compatível com RFC 9457**.
 
 Também foram implementados logs estruturados, `X-Correlation-ID`, medição de duração das requisições e health check do SQL Server.
 
-# Decisões técnicas
+# 🧩 Decisões técnicas
 
 - **Dapper:** SQL explícito, parametrizado e fácil de avaliar.
 - **DDD Lite:** entidade com comportamento sem adicionar complexidade desnecessária.
@@ -389,7 +387,7 @@ Também foram implementados logs estruturados, `X-Correlation-ID`, medição de 
 - **Migration SQL versionada:** suficiente para o escopo atual.
 - **KISS/YAGNI:** sem MediatR, AutoMapper, EF Core ou infraestrutura não necessária ao desafio.
 
-# Tempo dedicado e uso de IA
+# 🤖 Tempo dedicado e uso de IA
 
 Tempo aproximado dedicado: **8 horas**.
 
