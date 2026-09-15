@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+.env.*.local
+PROJECT_BOOTSTRAP.md
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+
+.npm-cache/
+openapi.local.json
