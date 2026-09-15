@@ -1,8 +1,8 @@
-# 🚀 Support Requests - Frontend
+# 🚀 Solicitações de Suporte - Frontend
 
 > Dashboard para gerenciamento de solicitações internas de suporte.
 
-## 📋 Overview
+## 📋 Visão geral
 
 Frontend do desafio `Challenge-Fullstack-Nextjs-Dotnet-SQLServer`.
 A aplicação consome a API .NET existente e mantém a lógica de negócio no servidor.

@@ -10,4 +10,3 @@
 |---|---|
 | Backend | https://github.com/FilipeHG/Challenge-Fullstack-Nextjs-Dotnet-SQLServer/tree/main/backend |
 | Frontend | https://github.com/FilipeHG/Challenge-Fullstack-Nextjs-Dotnet-SQLServer/tree/main/frontend |
-

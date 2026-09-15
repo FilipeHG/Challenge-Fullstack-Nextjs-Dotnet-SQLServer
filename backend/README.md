@@ -1,14 +1,14 @@
-# API de Solicitações de Suporte
+# 🚀 API de Solicitações de Suporte - Backend
 
-Backend do desafio técnico Fullstack para cadastro, acompanhamento e conclusão de solicitações internas de suporte.
+> Backend do desafio técnico Fullstack para cadastro, acompanhamento e conclusão de solicitações internas de suporte.
 
 O escopo desta entrega é o **backend**, desenvolvido com **.NET 10**, **ASP.NET Core Web API**, **Dapper** e **Microsoft SQL Server**.
 
-## Visão geral
+## 📋 Visão geral
 
 A API permite cadastrar, consultar, listar, filtrar, pesquisar, atualizar e excluir solicitações internas, além de oferecer autenticação JWT, documentação OpenAPI e health check com SQL Server.
 
-### Stack principal
+### 🛠 Stack principal
 
 | Tecnologia | Uso |
 |---|---|
@@ -23,7 +23,7 @@ A API permite cadastrar, consultar, listar, filtrar, pesquisar, atualizar e excl
 | WebApplicationFactory | Testes HTTP |
 | OpenAPI / Swagger | Contrato e documentação |
 
-## Requisitos do desafio
+## 🧭 Requisitos do desafio
 
 | Requisito | Status |
 |---|:---:|
@@ -43,7 +43,7 @@ A API permite cadastrar, consultar, listar, filtrar, pesquisar, atualizar e excl
 | Logs estruturados + Correlation ID | ✅ |
 | Health Check com SQL Server | ✅ |
 
-## Arquitetura
+## 🏛 Arquitetura
 
 O projeto utiliza **Pragmatic Layered Clean Architecture**:
 
